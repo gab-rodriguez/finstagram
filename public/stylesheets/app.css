@@ -23,3 +23,16 @@ main {
 .finstagram-post .user-info img {
     border-radius: 50%;
 }
+
+body {
+    font-family: 'Calibri', sans-serif;
+}
+
+a.photo {
+    transition: 0.5s;
+}
+
+a.photo:hover {
+    padding: 10px;
+    
+}
