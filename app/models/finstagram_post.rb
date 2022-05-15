@@ -7,6 +7,8 @@ class FinstagramPost < ActiveRecord::Base
     validates_presence_of :user
     #post cannot be created without an associated User
 
+    validates :photo_url, :user, presence: true
+
     def humanized_time_ago
         time_ago_in_secs = Time.now - self.created_at
         time_ago_in_minutes = time_ago_in_secs / 60
