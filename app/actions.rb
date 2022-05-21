@@ -88,3 +88,32 @@ get '/finstagram_posts/:id' do
   @finstagram_post = FinstagramPost.find(params[:id])   # find the finstagram post with the ID from the URL
   erb(:"finstagram_posts/show")               # render app/views/finstagram_posts/show.erb
 end
+
+post '/comments' do
+  post '/comments' do
+
+    text = params[:text]
+    finstagram_post_id = params[:finstagram_post_id]
+  
+    comment = Comment.new({ text: text, finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+  
+    comment.save
+  
+    redirect(back)
+  end
+end
+
+post '/likes' do
+  finstagram_post_id = params[:finstagram_post_id]
+
+  like = Like.new({ finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+  like.save
+
+  redirect(back)
+end
+
+delete '/likes/:id' do
+  like = Like.find(params[:id])
+  like.destroy
+  redirect(back)
+end
